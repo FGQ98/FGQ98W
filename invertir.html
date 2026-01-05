@@ -13,13 +13,14 @@
   
   <style>
     :root {
-      --color-fondo: #FAF9F6;
-      --color-texto: #2C2416;
-      --color-texto-suave: #5C5347;
-      --color-acento: #8B7355;
-      --color-verde: #5C6B54;
-      --color-linea: #E8E2D9;
-      --color-hover: #F5F3EF;
+      --color-fondo: #F0F5F4;
+      --color-texto: #1A2A28;
+      --color-texto-suave: #4A5A58;
+      --color-acento: #5B9A8B;
+      --color-acento-oscuro: #4A7A6D;
+      --color-acento-claro: #8BBCB0;
+      --color-linea: #E5EDEB;
+      --color-hover: #E8F0EE;
       --font-serif: 'Instrument Serif', Georgia, serif;
       --font-sans: 'DM Sans', -apple-system, sans-serif;
     }
@@ -62,16 +63,21 @@
     .logo-text {
       font-size: 1.1rem;
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
 
-    .logo-text span {
+    .logo-text .num {
+      color: var(--color-acento);
+    }
+
+    .logo-text span:not(.num) {
       font-weight: 300;
       color: var(--color-texto-suave);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       display: block;
       letter-spacing: 0.15em;
       text-transform: uppercase;
+      margin-top: 2px;
     }
 
     .nav { display: flex; gap: 2.5rem; }
@@ -228,8 +234,8 @@
     }
 
     .proyecto-mini-estado.eclosionando {
-      background: #E8F0E5;
-      color: var(--color-verde);
+      background: #E8F0EE;
+      color: var(--color-acento-oscuro);
     }
 
     /* ========== PROCESO ========== */
@@ -410,9 +416,9 @@
   <!-- HEADER -->
   <header class="header">
     <a href="index.html" class="logo">
-      <img src="assets/icono-fgq98.png" alt="FGQ 98" onerror="this.style.display='none'">
+      <img src="assets/icono-fgq98.png" alt="FGQ98" onerror="this.style.display='none'">
       <div class="logo-text">
-        FGQ 98
+        FGQ<span class="num">98</span>
         <span>Incubadora</span>
       </div>
     </a>
@@ -477,7 +483,7 @@
       
       <div class="proyecto-mini">
         <div class="proyecto-mini-info">
-          <h4>FAMILYNK</h4>
+          <h4>Familynk</h4>
           <p>Ecosistema familiar — El más avanzado del portfolio</p>
         </div>
         <span class="proyecto-mini-estado eclosionando">🐣 Eclosionando</span>
@@ -485,7 +491,7 @@
 
       <div class="proyecto-mini">
         <div class="proyecto-mini-info">
-          <h4>ESTRIDEA</h4>
+          <h4>Estridea</h4>
           <p>Copiloto de ideas de negocio con IA</p>
         </div>
         <span class="proyecto-mini-estado">🥚 Huevo</span>
@@ -493,7 +499,7 @@
 
       <div class="proyecto-mini">
         <div class="proyecto-mini-info">
-          <h4>GenZ GolfX</h4>
+          <h4>Genz Golfx</h4>
           <p>Golf para nuevas generaciones</p>
         </div>
         <span class="proyecto-mini-estado">🥚 Huevo</span>
@@ -559,7 +565,7 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-brand">
-        <strong>FGQ 98</strong> — Incubadora de proyectos digitales
+        <strong>FGQ<span style="color: var(--color-acento)">98</span></strong> — Incubadora de proyectos digitales
       </div>
       <div class="footer-links">
         <a href="mailto:hola@fgq98.com">hola@fgq98.com</a>

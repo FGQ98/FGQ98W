@@ -13,13 +13,14 @@
   
   <style>
     :root {
-      --color-fondo: #FAF9F6;
-      --color-texto: #2C2416;
-      --color-texto-suave: #5C5347;
-      --color-acento: #8B7355;
-      --color-verde: #5C6B54;
-      --color-linea: #E8E2D9;
-      --color-hover: #F5F3EF;
+      --color-fondo: #F0F5F4;
+      --color-texto: #1A2A28;
+      --color-texto-suave: #4A5A58;
+      --color-acento: #5B9A8B;
+      --color-acento-oscuro: #4A7A6D;
+      --color-acento-claro: #8BBCB0;
+      --color-linea: #E5EDEB;
+      --color-hover: #E8F0EE;
       --font-serif: 'Instrument Serif', Georgia, serif;
       --font-sans: 'DM Sans', -apple-system, sans-serif;
     }
@@ -64,16 +65,21 @@
     .logo-text {
       font-size: 1.1rem;
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
 
-    .logo-text span {
+    .logo-text .num {
+      color: var(--color-acento);
+    }
+
+    .logo-text span:not(.num) {
       font-weight: 300;
       color: var(--color-texto-suave);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       display: block;
       letter-spacing: 0.15em;
       text-transform: uppercase;
+      margin-top: 2px;
     }
 
     .nav { display: flex; gap: 2.5rem; }
@@ -413,9 +419,9 @@
   <!-- HEADER -->
   <header class="header">
     <a href="index.html" class="logo">
-      <img src="assets/icono-fgq98.png" alt="FGQ 98" onerror="this.style.display='none'">
+      <img src="assets/icono-fgq98.png" alt="FGQ98" onerror="this.style.display='none'">
       <div class="logo-text">
-        FGQ 98
+        FGQ<span class="num">98</span>
         <span>Incubadora</span>
       </div>
     </a>
@@ -462,7 +468,7 @@
           <li>Arquitectura escalable</li>
         </ul>
         <div class="servicio-precio">
-          <strong>Desde 8.000€</strong> — Ver tabla de precios abajo
+          <strong>A consultar</strong> — Según alcance y complejidad
         </div>
       </div>
 
@@ -487,83 +493,19 @@
       <div class="servicio-card">
         <div class="servicio-icon">📊</div>
         <h2>Valoración y transiciones</h2>
-        <p>Orientación en compraventa de proyectos early-stage. Due diligence para compradores, vendedores e inversores.</p>
+        <p>Orientación estratégica en compraventa de proyectos early-stage. Facilito el proceso y preparo la documentación para que los abogados hagan su trabajo.</p>
         <ul class="servicio-lista">
-          <li>Valoración de MVPs y startups</li>
-          <li>Due diligence técnica</li>
-          <li>Análisis de viabilidad</li>
-          <li>Asesoramiento en transiciones</li>
-          <li>Mediación entre partes</li>
+          <li>Estrategia de operación</li>
+          <li>Conceptualización del deal</li>
+          <li>Análisis financiero y valoración</li>
+          <li>Preparación de documentación</li>
+          <li>Coordinación entre partes</li>
         </ul>
         <div class="servicio-precio">
           <strong>A consultar</strong> — Según complejidad
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- TABLA DE PRECIOS MVPs -->
-  <section class="tabla-section">
-    <div class="tabla-container">
-      <div class="tabla-header">
-        <h2>Tabla de valor de MVPs</h2>
-        <p>Orientación de costes según complejidad y plazo de desarrollo.</p>
-      </div>
-
-      <div class="tabla-scroll">
-        <table class="tabla-mvp">
-          <thead>
-            <tr>
-              <th>Plazo / Complejidad</th>
-              <th class="complejidad-header">Básico</th>
-              <th class="complejidad-header">Estándar</th>
-              <th class="complejidad-header">Complejo</th>
-              <th class="complejidad-header">Sofisticado</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>2 meses</strong><br><small>MVP rápido / nocode + código</small></td>
-              <td><span class="precio-rango">8.000 - 15.000€</span></td>
-              <td><span class="precio-rango">15.000 - 30.000€</span></td>
-              <td><span class="precio-rango">30.000 - 60.000€</span></td>
-              <td><span class="precio-rango">60.000 - 120.000€</span></td>
-            </tr>
-            <tr>
-              <td><strong>2-4 meses</strong><br><small>SaaS y Marketplaces sencillos</small></td>
-              <td><span class="precio-rango">10.000 - 20.000€</span></td>
-              <td><span class="precio-rango">20.000 - 45.000€</span></td>
-              <td><span class="precio-rango">50.000 - 90.000€</span></td>
-              <td><span class="precio-rango">90.000 - 180.000€</span></td>
-            </tr>
-            <tr>
-              <td><strong>4-6 meses</strong><br><small>Producto con features profundas</small></td>
-              <td><span class="precio-rango">15.000 - 25.000€</span></td>
-              <td><span class="precio-rango">35.000 - 60.000€</span></td>
-              <td><span class="precio-rango">70.000 - 120.000€</span></td>
-              <td><span class="precio-rango">120.000 - 220.000€</span></td>
-            </tr>
-            <tr>
-              <td><strong>6-12 meses</strong><br><small>Deep Tech / Regulación / Integraciones</small></td>
-              <td><span class="precio-rango">20.000 - 30.000€</span></td>
-              <td><span class="precio-rango">45.000 - 80.000€</span></td>
-              <td><span class="precio-rango">90.000 - 150.000€</span></td>
-              <td><span class="precio-rango">150.000 - 300.000€</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="tabla-notas">
-        <h4>Niveles de complejidad</h4>
-        <p>
-          <strong>Básico:</strong> Web responsive, 1 rol de usuario, registro/login, listado + detalle, métricas mínimas. 0-1 integraciones.<br>
-          <strong>Estándar:</strong> Web con panel admin, 2-3 roles, autenticación completa, notificaciones. 2-4 integraciones.<br>
-          <strong>Complejo:</strong> Multiplataforma, flujos multipaso, automatizaciones, dashboards, arquitectura modular. 4-8 integraciones.<br>
-          <strong>Sofisticado:</strong> Datos críticos, integraciones sensibles (banca, salud), ML/Data, equipo completo con QA.
-        </p>
-      </div>
     </div>
   </section>
 
@@ -580,7 +522,7 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-brand">
-        <strong>FGQ 98</strong> — Incubadora de proyectos digitales
+        <strong>FGQ<span style="color: var(--color-acento)">98</span></strong> — Incubadora de proyectos digitales
       </div>
       <div class="footer-links">
         <a href="mailto:hola@fgq98.com">hola@fgq98.com</a>

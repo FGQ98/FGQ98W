@@ -14,13 +14,14 @@
   
   <style>
     :root {
-      --color-fondo: #FAF9F6;
-      --color-texto: #2C2416;
-      --color-texto-suave: #5C5347;
-      --color-acento: #8B7355;
-      --color-verde: #5C6B54;
-      --color-linea: #E8E2D9;
-      --color-hover: #F5F3EF;
+      --color-fondo: #F0F5F4;
+      --color-texto: #1A2A28;
+      --color-texto-suave: #4A5A58;
+      --color-acento: #5B9A8B;
+      --color-acento-oscuro: #4A7A6D;
+      --color-acento-claro: #8BBCB0;
+      --color-linea: #E5EDEB;
+      --color-hover: #E8F0EE;
       --font-serif: 'Instrument Serif', Georgia, serif;
       --font-sans: 'DM Sans', -apple-system, sans-serif;
     }
@@ -84,16 +85,21 @@
       font-family: var(--font-sans);
       font-size: 1.1rem;
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
 
-    .logo-text span {
+    .logo-text .num {
+      color: var(--color-acento);
+    }
+
+    .logo-text span:not(.num) {
       font-weight: 300;
       color: var(--color-texto-suave);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       display: block;
       letter-spacing: 0.15em;
       text-transform: uppercase;
+      margin-top: 2px;
     }
 
     .nav {
@@ -156,7 +162,7 @@
 
     .hero h1 em {
       font-style: italic;
-      color: var(--color-verde);
+      color: var(--color-acento);
     }
 
     .hero-subtitle {
@@ -325,7 +331,7 @@
 
     .huevo-card .tagline {
       font-size: 0.85rem;
-      color: var(--color-verde);
+      color: var(--color-acento);
       margin-bottom: 1rem;
     }
 
@@ -503,9 +509,9 @@
   <!-- HEADER -->
   <header class="header" id="header">
     <a href="index.html" class="logo">
-      <img src="assets/icono-fgq98.png" alt="FGQ 98" onerror="this.style.display='none'">
+      <img src="assets/icono-fgq98.png" alt="FGQ98" onerror="this.style.display='none'">
       <div class="logo-text">
-        FGQ 98
+        FGQ<span class="num">98</span>
         <span>Incubadora</span>
       </div>
     </a>
@@ -582,10 +588,10 @@
 
     <div class="huevos-grid">
       
-      <!-- FAMILYNK -->
+      <!-- Familynk -->
       <article class="huevo-card">
         <span class="huevo-estado">🐣 Eclosionando</span>
-        <h3>FAMILYNK</h3>
+        <h3>Familynk</h3>
         <p class="tagline">Ecosistema familiar</p>
         <p>El lugar de encuentro de tu familia. Comparte bienes comunes, preserva la cultura familiar y activa eventos que unen generaciones.</p>
         <a href="https://www.familynk.es" target="_blank" class="huevo-link">
@@ -593,10 +599,10 @@
         </a>
       </article>
 
-      <!-- ESTRIDEA -->
+      <!-- Estridea -->
       <article class="huevo-card">
         <span class="huevo-estado">🥚 Huevo</span>
-        <h3>ESTRIDEA</h3>
+        <h3>Estridea</h3>
         <p class="tagline">Copiloto de ideas</p>
         <p>Asistente personal para preparar y ejecutar un plan de acción. Convierte tu idea en oportunidad de negocio.</p>
         <a href="https://www.estridea.com" target="_blank" class="huevo-link">
@@ -604,10 +610,10 @@
         </a>
       </article>
 
-      <!-- GENZ GOLFX -->
+      <!-- Genz Golfx -->
       <article class="huevo-card">
         <span class="huevo-estado">🥚 Huevo</span>
-        <h3>GenZ GolfX</h3>
+        <h3>Genz Golfx</h3>
         <p class="tagline">Golf para nuevas generaciones</p>
         <p>Reinventando la experiencia del golf para hacerla accesible, social y atractiva para los que nunca se lo plantearon.</p>
         <a href="https://www.genzgolfx.com" target="_blank" class="huevo-link">
@@ -615,7 +621,7 @@
         </a>
       </article>
 
-      <!-- BALISTICAMPEO -->
+      <!-- Balisticampeo -->
       <article class="huevo-card">
         <span class="huevo-estado">🥚 Huevo</span>
         <h3>Balisticampeo</h3>
@@ -665,7 +671,7 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-brand">
-        <strong>FGQ 98</strong> — Incubadora de proyectos digitales
+        <strong>FGQ<span style="color: var(--color-acento)">98</span></strong> — Incubadora de proyectos digitales
       </div>
       <div class="footer-links">
         <a href="mailto:hola@fgq98.com">hola@fgq98.com</a>
