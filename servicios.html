@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios — FGQ 98 Incubadora</title>
+  <meta name="description" content="Desarrollo web, mentorías y valoración de proyectos. Servicios para emprendedores y empresas.">
+  <link rel="icon" href="assets/icono-fgq98.png" type="image/png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-fondo: #FAF9F6;
+      --color-texto: #2C2416;
+      --color-texto-suave: #5C5347;
+      --color-acento: #8B7355;
+      --color-verde: #5C6B54;
+      --color-linea: #E8E2D9;
+      --color-hover: #F5F3EF;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ========== HEADER ========== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--color-fondo);
+      border-bottom: 1px solid var(--color-linea);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img { height: 32px; width: auto; }
+
+    .logo-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .logo-text span {
+      font-weight: 300;
+      color: var(--color-texto-suave);
+      font-size: 0.75rem;
+      display: block;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .nav { display: flex; gap: 2.5rem; }
+
+    .nav a {
+      font-size: 0.9rem;
+      color: var(--color-texto-suave);
+      transition: color 0.2s;
+    }
+
+    .nav a:hover, .nav a.active { color: var(--color-texto); }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .menu-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--color-texto);
+    }
+
+    /* ========== PAGE HEADER ========== */
+    .page-header {
+      padding: 10rem 2rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      color: var(--color-texto-suave);
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    /* ========== SERVICIOS GRID ========== */
+    .servicios-section {
+      padding: 2rem 2rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .servicio-card {
+      background: white;
+      border: 1px solid var(--color-linea);
+      border-radius: 12px;
+      padding: 2.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .servicio-card:hover {
+      border-color: var(--color-acento);
+      box-shadow: 0 8px 30px rgba(44, 36, 22, 0.06);
+    }
+
+    .servicio-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .servicio-card h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .servicio-card > p {
+      color: var(--color-texto-suave);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .servicio-lista {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .servicio-lista li {
+      padding: 0.4rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.9rem;
+      color: var(--color-texto-suave);
+    }
+
+    .servicio-lista li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--color-acento);
+    }
+
+    .servicio-precio {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-linea);
+      font-size: 0.85rem;
+      color: var(--color-texto-suave);
+    }
+
+    .servicio-precio strong {
+      color: var(--color-texto);
+      font-weight: 500;
+    }
+
+    /* ========== TABLA MVPs ========== */
+    .tabla-section {
+      padding: 4rem 2rem;
+      background: white;
+      border-top: 1px solid var(--color-linea);
+      border-bottom: 1px solid var(--color-linea);
+    }
+
+    .tabla-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tabla-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .tabla-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .tabla-header p {
+      color: var(--color-texto-suave);
+    }
+
+    .tabla-mvp {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .tabla-mvp th,
+    .tabla-mvp td {
+      padding: 1rem;
+      text-align: center;
+      border: 1px solid var(--color-linea);
+    }
+
+    .tabla-mvp thead th {
+      background: var(--color-fondo);
+      font-weight: 500;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tabla-mvp thead th:first-child {
+      text-align: left;
+    }
+
+    .tabla-mvp tbody td:first-child {
+      text-align: left;
+      font-weight: 400;
+      background: var(--color-fondo);
+    }
+
+    .tabla-mvp tbody tr:hover td {
+      background: var(--color-hover);
+    }
+
+    .tabla-mvp tbody tr:hover td:first-child {
+      background: var(--color-linea);
+    }
+
+    .tabla-mvp .complejidad-header {
+      background: var(--color-texto) !important;
+      color: var(--color-fondo);
+    }
+
+    .precio-rango {
+      font-weight: 500;
+      color: var(--color-texto);
+    }
+
+    .tabla-notas {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: var(--color-fondo);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--color-texto-suave);
+    }
+
+    .tabla-notas h4 {
+      font-weight: 500;
+      color: var(--color-texto);
+      margin-bottom: 0.75rem;
+    }
+
+    .tabla-scroll {
+      overflow-x: auto;
+    }
+
+    /* ========== CTA ========== */
+    .cta-section {
+      padding: 4rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: var(--color-texto-suave);
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+      background: var(--color-texto);
+      color: var(--color-fondo);
+    }
+
+    .btn:hover {
+      background: var(--color-acento);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--color-linea);
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      font-size: 0.9rem;
+      color: var(--color-texto-suave);
+    }
+
+    .footer-brand strong {
+      color: var(--color-texto);
+      font-weight: 500;
+    }
+
+    .footer-links { display: flex; gap: 2rem; }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--color-texto-suave);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--color-texto); }
+
+    /* ========== MOBILE ========== */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--color-fondo);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .mobile-nav.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-nav a {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .menu-toggle { display: flex; }
+      .mobile-nav { display: flex; }
+
+      .tabla-mvp { font-size: 0.75rem; }
+      .tabla-mvp th, .tabla-mvp td { padding: 0.6rem 0.4rem; }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="assets/icono-fgq98.png" alt="FGQ 98" onerror="this.style.display='none'">
+      <div class="logo-text">
+        FGQ 98
+        <span>Incubadora</span>
+      </div>
+    </a>
+    
+    <nav class="nav">
+      <a href="huevos.html">Proyectos</a>
+      <a href="servicios.html" class="active">Servicios</a>
+      <a href="invertir.html">Invertir</a>
+      <a href="mailto:hola@fgq98.com">Contacto</a>
+    </nav>
+
+    <div class="menu-toggle" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="huevos.html">Proyectos</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="invertir.html">Invertir</a>
+    <a href="mailto:hola@fgq98.com">Contacto</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <h1>Servicios</h1>
+    <p>Mientras incubamos nuestros proyectos, ayudamos a otros emprendedores y empresas a construir los suyos.</p>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="servicios-section">
+    <div class="servicios-grid">
+      
+      <!-- DESARROLLO -->
+      <div class="servicio-card">
+        <div class="servicio-icon">⚙️</div>
+        <h2>Desarrollo web</h2>
+        <p>MVPs y aplicativos web a medida. Desde landing pages hasta plataformas con usuarios, pagos e integraciones.</p>
+        <ul class="servicio-lista">
+          <li>Webs responsive y PWAs</li>
+          <li>Paneles de administración</li>
+          <li>Autenticación y perfiles</li>
+          <li>Integraciones (Stripe, APIs, ERPs)</li>
+          <li>Arquitectura escalable</li>
+        </ul>
+        <div class="servicio-precio">
+          <strong>Desde 8.000€</strong> — Ver tabla de precios abajo
+        </div>
+      </div>
+
+      <!-- MENTORIAS -->
+      <div class="servicio-card">
+        <div class="servicio-icon">🧭</div>
+        <h2>Mentorías</h2>
+        <p>Acompañamiento a emprendedores en las fases críticas: validación, producto, estrategia y ejecución.</p>
+        <ul class="servicio-lista">
+          <li>Sesiones 1:1 personalizadas</li>
+          <li>Revisión de producto y modelo</li>
+          <li>Estrategia de lanzamiento</li>
+          <li>Feedback honesto y directo</li>
+          <li>Red de contactos</li>
+        </ul>
+        <div class="servicio-precio">
+          <strong>150€/hora</strong> — Bonos disponibles
+        </div>
+      </div>
+
+      <!-- VALORACION -->
+      <div class="servicio-card">
+        <div class="servicio-icon">📊</div>
+        <h2>Valoración y transiciones</h2>
+        <p>Orientación en compraventa de proyectos early-stage. Due diligence para compradores, vendedores e inversores.</p>
+        <ul class="servicio-lista">
+          <li>Valoración de MVPs y startups</li>
+          <li>Due diligence técnica</li>
+          <li>Análisis de viabilidad</li>
+          <li>Asesoramiento en transiciones</li>
+          <li>Mediación entre partes</li>
+        </ul>
+        <div class="servicio-precio">
+          <strong>A consultar</strong> — Según complejidad
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TABLA DE PRECIOS MVPs -->
+  <section class="tabla-section">
+    <div class="tabla-container">
+      <div class="tabla-header">
+        <h2>Tabla de valor de MVPs</h2>
+        <p>Orientación de costes según complejidad y plazo de desarrollo.</p>
+      </div>
+
+      <div class="tabla-scroll">
+        <table class="tabla-mvp">
+          <thead>
+            <tr>
+              <th>Plazo / Complejidad</th>
+              <th class="complejidad-header">Básico</th>
+              <th class="complejidad-header">Estándar</th>
+              <th class="complejidad-header">Complejo</th>
+              <th class="complejidad-header">Sofisticado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>2 meses</strong><br><small>MVP rápido / nocode + código</small></td>
+              <td><span class="precio-rango">8.000 - 15.000€</span></td>
+              <td><span class="precio-rango">15.000 - 30.000€</span></td>
+              <td><span class="precio-rango">30.000 - 60.000€</span></td>
+              <td><span class="precio-rango">60.000 - 120.000€</span></td>
+            </tr>
+            <tr>
+              <td><strong>2-4 meses</strong><br><small>SaaS y Marketplaces sencillos</small></td>
+              <td><span class="precio-rango">10.000 - 20.000€</span></td>
+              <td><span class="precio-rango">20.000 - 45.000€</span></td>
+              <td><span class="precio-rango">50.000 - 90.000€</span></td>
+              <td><span class="precio-rango">90.000 - 180.000€</span></td>
+            </tr>
+            <tr>
+              <td><strong>4-6 meses</strong><br><small>Producto con features profundas</small></td>
+              <td><span class="precio-rango">15.000 - 25.000€</span></td>
+              <td><span class="precio-rango">35.000 - 60.000€</span></td>
+              <td><span class="precio-rango">70.000 - 120.000€</span></td>
+              <td><span class="precio-rango">120.000 - 220.000€</span></td>
+            </tr>
+            <tr>
+              <td><strong>6-12 meses</strong><br><small>Deep Tech / Regulación / Integraciones</small></td>
+              <td><span class="precio-rango">20.000 - 30.000€</span></td>
+              <td><span class="precio-rango">45.000 - 80.000€</span></td>
+              <td><span class="precio-rango">90.000 - 150.000€</span></td>
+              <td><span class="precio-rango">150.000 - 300.000€</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tabla-notas">
+        <h4>Niveles de complejidad</h4>
+        <p>
+          <strong>Básico:</strong> Web responsive, 1 rol de usuario, registro/login, listado + detalle, métricas mínimas. 0-1 integraciones.<br>
+          <strong>Estándar:</strong> Web con panel admin, 2-3 roles, autenticación completa, notificaciones. 2-4 integraciones.<br>
+          <strong>Complejo:</strong> Multiplataforma, flujos multipaso, automatizaciones, dashboards, arquitectura modular. 4-8 integraciones.<br>
+          <strong>Sofisticado:</strong> Datos críticos, integraciones sensibles (banca, salud), ML/Data, equipo completo con QA.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>¿Hablamos?</h2>
+    <p>Cuéntanos tu proyecto y te orientamos sin compromiso sobre alcance, tiempos y presupuesto.</p>
+    <a href="mailto:hola@fgq98.com?subject=Consulta%20servicios" class="btn">
+      Contactar →
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <strong>FGQ 98</strong> — Incubadora de proyectos digitales
+      </div>
+      <div class="footer-links">
+        <a href="mailto:hola@fgq98.com">hola@fgq98.com</a>
+        <a href="index.html">Inicio</a>
+        <a href="huevos.html">Proyectos</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    menuToggle.addEventListener('click', () => mobileNav.classList.toggle('active'));
+  </script>
+
+</body>
+</html>

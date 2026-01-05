@@ -1,0 +1,7 @@
+# FGQ 98 Incubadora
+# www.fgq98.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.fgq98.com/sitemap.xml

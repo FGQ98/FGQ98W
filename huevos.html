@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos — FGQ 98 Incubadora</title>
+  <meta name="description" content="Los proyectos que estamos incubando. FAMILYNK, ESTRIDEA, GenZ GolfX y Balisticampeo.">
+  <link rel="icon" href="assets/icono-fgq98.png" type="image/png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-fondo: #FAF9F6;
+      --color-texto: #2C2416;
+      --color-texto-suave: #5C5347;
+      --color-acento: #8B7355;
+      --color-verde: #5C6B54;
+      --color-linea: #E8E2D9;
+      --color-hover: #F5F3EF;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ========== HEADER ========== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--color-fondo);
+      border-bottom: 1px solid var(--color-linea);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .logo-text span {
+      font-weight: 300;
+      color: var(--color-texto-suave);
+      font-size: 0.75rem;
+      display: block;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav a {
+      font-size: 0.9rem;
+      color: var(--color-texto-suave);
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--color-texto);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .menu-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--color-texto);
+    }
+
+    /* ========== PAGE HEADER ========== */
+    .page-header {
+      padding: 10rem 2rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      color: var(--color-texto-suave);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ========== LEYENDA ESTADOS ========== */
+    .estados-leyenda {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: white;
+      border: 1px solid var(--color-linea);
+      border-radius: 8px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .estado-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--color-texto-suave);
+    }
+
+    .estado-item .emoji {
+      font-size: 1.2rem;
+    }
+
+    /* ========== PROYECTOS LISTA ========== */
+    .proyectos-section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .proyecto-card {
+      background: white;
+      border: 1px solid var(--color-linea);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 2rem;
+      align-items: start;
+      transition: all 0.3s ease;
+    }
+
+    .proyecto-card:hover {
+      border-color: var(--color-acento);
+      box-shadow: 0 8px 30px rgba(44, 36, 22, 0.06);
+    }
+
+    .proyecto-estado {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-acento);
+      margin-bottom: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      background: var(--color-hover);
+      border-radius: 20px;
+    }
+
+    .proyecto-estado.eclosionando {
+      background: #E8F0E5;
+      color: var(--color-verde);
+    }
+
+    .proyecto-card h2 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+
+    .proyecto-tagline {
+      color: var(--color-verde);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .proyecto-descripcion {
+      color: var(--color-texto-suave);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .proyecto-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-tag {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      background: var(--color-fondo);
+      border: 1px solid var(--color-linea);
+      border-radius: 4px;
+      color: var(--color-texto-suave);
+    }
+
+    .proyecto-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .proyecto-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--color-texto);
+      padding: 0.6rem 1.2rem;
+      border: 1px solid var(--color-linea);
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .proyecto-link:hover {
+      border-color: var(--color-texto);
+      background: var(--color-texto);
+      color: var(--color-fondo);
+    }
+
+    .proyecto-meta {
+      text-align: right;
+      padding-top: 0.5rem;
+    }
+
+    .proyecto-dominio {
+      font-size: 0.85rem;
+      color: var(--color-acento);
+      margin-bottom: 0.5rem;
+    }
+
+    .proyecto-categoria {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-texto-suave);
+    }
+
+    /* ========== CTA INVERTIR ========== */
+    .cta-invertir {
+      background: var(--color-texto);
+      color: var(--color-fondo);
+      padding: 3rem;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .cta-invertir h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-invertir p {
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-invertir .btn {
+      background: var(--color-fondo);
+      color: var(--color-texto);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .cta-invertir .btn:hover {
+      background: var(--color-acento);
+      color: white;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--color-linea);
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      font-size: 0.9rem;
+      color: var(--color-texto-suave);
+    }
+
+    .footer-brand strong {
+      color: var(--color-texto);
+      font-weight: 500;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--color-texto-suave);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-texto);
+    }
+
+    /* ========== MOBILE NAV ========== */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--color-fondo);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-nav a {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .menu-toggle { display: flex; }
+      .mobile-nav { display: flex; }
+
+      .proyecto-card {
+        grid-template-columns: 1fr;
+      }
+
+      .proyecto-meta {
+        text-align: left;
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-linea);
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="assets/icono-fgq98.png" alt="FGQ 98" onerror="this.style.display='none'">
+      <div class="logo-text">
+        FGQ 98
+        <span>Incubadora</span>
+      </div>
+    </a>
+    
+    <nav class="nav">
+      <a href="huevos.html" class="active">Proyectos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="invertir.html">Invertir</a>
+      <a href="mailto:hola@fgq98.com">Contacto</a>
+    </nav>
+
+    <div class="menu-toggle" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="huevos.html">Proyectos</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="invertir.html">Invertir</a>
+    <a href="mailto:hola@fgq98.com">Contacto</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <h1>En el nido</h1>
+    <p>Los proyectos que estamos incubando. Algunos eclosionarán, otros alzarán el vuelo.</p>
+    
+    <div class="estados-leyenda">
+      <div class="estado-item">
+        <span class="emoji">🥚</span>
+        <span><strong>Huevo</strong> — MVP en desarrollo</span>
+      </div>
+      <div class="estado-item">
+        <span class="emoji">🐣</span>
+        <span><strong>Pollo</strong> — Tracción inicial</span>
+      </div>
+      <div class="estado-item">
+        <span class="emoji">🦅</span>
+        <span><strong>Águila</strong> — Volando solo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section class="proyectos-section">
+
+    <!-- FAMILYNK -->
+    <article class="proyecto-card">
+      <div class="proyecto-content">
+        <span class="proyecto-estado eclosionando">🐣 Eclosionando</span>
+        <h2>FAMILYNK</h2>
+        <p class="proyecto-tagline">Ecosistema familiar</p>
+        <p class="proyecto-descripcion">
+          El lugar de encuentro de una familia para compartir bienes comunes, preservar 
+          la cultura familiar, comunicarse con canales modernos y activar eventos que 
+          unen generaciones. Sin rollos de herencias ni gestión patrimonial: solo lo 
+          bueno de estar conectados.
+        </p>
+        <div class="proyecto-features">
+          <span class="feature-tag">Chat familiar</span>
+          <span class="feature-tag">Calendario compartido</span>
+          <span class="feature-tag">Álbumes</span>
+          <span class="feature-tag">Recetas</span>
+          <span class="feature-tag">Historias</span>
+          <span class="feature-tag">Gestión de bienes</span>
+        </div>
+        <div class="proyecto-actions">
+          <a href="https://www.familynk.es" target="_blank" class="proyecto-link">
+            Visitar web →
+          </a>
+        </div>
+      </div>
+      <div class="proyecto-meta">
+        <p class="proyecto-dominio">familynk.es</p>
+        <p class="proyecto-categoria">Familia & Comunidad</p>
+      </div>
+    </article>
+
+    <!-- ESTRIDEA -->
+    <article class="proyecto-card">
+      <div class="proyecto-content">
+        <span class="proyecto-estado">🥚 Huevo</span>
+        <h2>ESTRIDEA</h2>
+        <p class="proyecto-tagline">Copiloto de ideas de negocio</p>
+        <p class="proyecto-descripcion">
+          Asistente personal para preparar y ejecutar un plan de acción que convierta 
+          tu idea en oportunidad de negocio. Te asiste en el proceso, te revisa, te 
+          cuestiona y te ayuda a no perderte en el camino.
+        </p>
+        <div class="proyecto-features">
+          <span class="feature-tag">IA conversacional</span>
+          <span class="feature-tag">Plan de acción</span>
+          <span class="feature-tag">Validación</span>
+          <span class="feature-tag">Seguimiento</span>
+        </div>
+        <div class="proyecto-actions">
+          <a href="https://www.estridea.com" target="_blank" class="proyecto-link">
+            Visitar web →
+          </a>
+        </div>
+      </div>
+      <div class="proyecto-meta">
+        <p class="proyecto-dominio">estridea.com</p>
+        <p class="proyecto-categoria">Emprendimiento & IA</p>
+      </div>
+    </article>
+
+    <!-- GENZ GOLFX -->
+    <article class="proyecto-card">
+      <div class="proyecto-content">
+        <span class="proyecto-estado">🥚 Huevo</span>
+        <h2>GenZ GolfX</h2>
+        <p class="proyecto-tagline">Golf para nuevas generaciones</p>
+        <p class="proyecto-descripcion">
+          Reinventando la experiencia del golf para hacerla accesible, social y 
+          atractiva para quienes nunca se lo plantearon. Menos etiqueta rancia, 
+          más diversión real.
+        </p>
+        <div class="proyecto-features">
+          <span class="feature-tag">Comunidad</span>
+          <span class="feature-tag">Gamificación</span>
+          <span class="feature-tag">Eventos</span>
+          <span class="feature-tag">Formación</span>
+        </div>
+        <div class="proyecto-actions">
+          <a href="https://www.genzgolfx.com" target="_blank" class="proyecto-link">
+            Visitar web →
+          </a>
+        </div>
+      </div>
+      <div class="proyecto-meta">
+        <p class="proyecto-dominio">genzgolfx.com</p>
+        <p class="proyecto-categoria">Deporte & Lifestyle</p>
+      </div>
+    </article>
+
+    <!-- BALISTICAMPEO -->
+    <article class="proyecto-card">
+      <div class="proyecto-content">
+        <span class="proyecto-estado">🥚 Huevo</span>
+        <h2>Balisticampeo</h2>
+        <p class="proyecto-tagline">Balística para mortales</p>
+        <p class="proyecto-descripcion">
+          Analizador visual de agrupaciones de disparos para facilitar ajustes e 
+          información balística a aficionados. Sin el farragoso técnico, con los 
+          datos que realmente necesitas para mejorar.
+        </p>
+        <div class="proyecto-features">
+          <span class="feature-tag">Análisis visual</span>
+          <span class="feature-tag">Agrupaciones</span>
+          <span class="feature-tag">Ajustes</span>
+          <span class="feature-tag">Historial</span>
+        </div>
+        <div class="proyecto-actions">
+          <a href="https://www.balisticampeo.com" target="_blank" class="proyecto-link">
+            Visitar web →
+          </a>
+        </div>
+      </div>
+      <div class="proyecto-meta">
+        <p class="proyecto-dominio">balisticampeo.com</p>
+        <p class="proyecto-categoria">Deporte & Herramientas</p>
+      </div>
+    </article>
+
+    <!-- CTA INVERTIR -->
+    <div class="cta-invertir">
+      <h3>¿Te interesa algún proyecto?</h3>
+      <p>Estamos abiertos a incorporar socios, inversores o colaboradores en cualquiera de los huevos.</p>
+      <a href="invertir.html" class="btn">Saber más</a>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <strong>FGQ 98</strong> — Incubadora de proyectos digitales
+      </div>
+      <div class="footer-links">
+        <a href="mailto:hola@fgq98.com">hola@fgq98.com</a>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

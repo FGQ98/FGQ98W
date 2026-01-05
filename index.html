@@ -3,461 +3,689 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MVP Launches conecta proyectos con Producto Mínimo Viable con equipos capaces de escalarlos. Ecosistema para creadores, emprendedores e inversores.">
+  <title>FGQ 98 — Incubadora de Proyectos Digitales</title>
+  <meta name="description" content="Incubamos ideas digitales. Algunas se convierten en águilas. Desarrollo web, mentorías y proyectos propios.">
+  <link rel="icon" href="assets/icono-fgq98.png" type="image/png">
   
-  <!-- Open Graph -->
-  <meta property="og:title" content="MVP Launches - Conectamos proyectos con equipos">
-  <meta property="og:description" content="Ecosistema para creadores de MVPs, emprendedores e inversores. Tu proyecto merece despegar.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mvplaunches.com">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   
-  <title>MVP Launches | Conectamos proyectos con equipos</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/logo-mvp.png">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/home.css">
+  <style>
+    :root {
+      --color-fondo: #FAF9F6;
+      --color-texto: #2C2416;
+      --color-texto-suave: #5C5347;
+      --color-acento: #8B7355;
+      --color-verde: #5C6B54;
+      --color-linea: #E8E2D9;
+      --color-hover: #F5F3EF;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ========== HEADER ========== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--color-fondo);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .header.scrolled {
+      border-bottom-color: var(--color-linea);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .logo-text span {
+      font-weight: 300;
+      color: var(--color-texto-suave);
+      font-size: 0.75rem;
+      display: block;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav a {
+      font-size: 0.9rem;
+      color: var(--color-texto-suave);
+      transition: color 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .nav a:hover {
+      color: var(--color-texto);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .menu-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--color-texto);
+      transition: 0.3s;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-acento);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--color-verde);
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--color-texto-suave);
+      max-width: 560px;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.8rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--color-texto);
+      color: var(--color-fondo);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-acento);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--color-linea);
+      color: var(--color-texto);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-texto);
+    }
+
+    /* ========== SECCIÓN PROCESO ========== */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      color: var(--color-texto-suave);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .proceso {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .proceso::before {
+      content: '';
+      position: absolute;
+      top: 60px;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: var(--color-linea);
+      z-index: 0;
+    }
+
+    .proceso-item {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .proceso-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.5rem;
+      background: var(--color-fondo);
+      border: 1px solid var(--color-linea);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .proceso-item h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .proceso-item p {
+      font-size: 0.9rem;
+      color: var(--color-texto-suave);
+    }
+
+    /* ========== SECCIÓN HUEVOS (Proyectos) ========== */
+    .huevos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .huevo-card {
+      background: white;
+      border: 1px solid var(--color-linea);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .huevo-card:hover {
+      border-color: var(--color-acento);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(44, 36, 22, 0.08);
+    }
+
+    .huevo-estado {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-acento);
+      margin-bottom: 1rem;
+      padding: 0.3rem 0.8rem;
+      background: var(--color-hover);
+      border-radius: 20px;
+    }
+
+    .huevo-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .huevo-card .tagline {
+      font-size: 0.85rem;
+      color: var(--color-verde);
+      margin-bottom: 1rem;
+    }
+
+    .huevo-card p {
+      font-size: 0.9rem;
+      color: var(--color-texto-suave);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .huevo-link {
+      font-size: 0.85rem;
+      color: var(--color-texto);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.2s ease;
+    }
+
+    .huevo-link:hover {
+      gap: 0.7rem;
+      color: var(--color-acento);
+    }
+
+    .ver-todos {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* ========== SECCIÓN SERVICIOS ========== */
+    .servicios-preview {
+      background: white;
+      border: 1px solid var(--color-linea);
+      border-radius: 8px;
+      padding: 3rem;
+    }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .servicio-item h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .servicio-item p {
+      font-size: 0.9rem;
+      color: var(--color-texto-suave);
+      line-height: 1.6;
+    }
+
+    .servicios-cta {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--color-linea);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--color-linea);
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      font-size: 0.9rem;
+      color: var(--color-texto-suave);
+    }
+
+    .footer-brand strong {
+      color: var(--color-texto);
+      font-weight: 500;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--color-texto-suave);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-texto);
+    }
+
+    /* ========== MOBILE NAV ========== */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--color-fondo);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-nav a {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: var(--color-texto);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .proceso {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .proceso::before {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
   <header class="header" id="header">
-    <div class="container">
-      <div class="header__inner">
-        <a href="/" class="header__logo">
-          <img src="assets/logo-mvp.png" alt="MVP Launches">
-          <span class="header__logo-text">mvp<span>launches</span></span>
-        </a>
-        
-        <!-- Desktop Nav -->
-        <nav class="header__nav header__nav--desktop">
-          <a href="#que-es" data-i18n="nav.about">Qué es</a>
-          <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
-          <a href="tasacion.html">Tasación</a>
-          <a href="protocolos.html">Protocolos</a>
-          <a href="manifiesto.html" data-i18n="nav.manifesto">Manifiesto</a>
-          <div class="header__lang">
-            <button class="header__lang-btn active" data-lang="es">ES</button>
-            <span class="header__lang-sep">|</span>
-            <button class="header__lang-btn" data-lang="en">EN</button>
-          </div>
-          <a href="login.html" class="btn btn--secondary btn--small" data-i18n="nav.login">Acceder</a>
-          <a href="registro.html" class="btn btn--primary btn--small" data-i18n="nav.register">Registro</a>
-        </nav>
-        
-        <!-- Mobile Menu Button -->
-        <button class="header__hamburger" id="menuToggle" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+    <a href="index.html" class="logo">
+      <img src="assets/icono-fgq98.png" alt="FGQ 98" onerror="this.style.display='none'">
+      <div class="logo-text">
+        FGQ 98
+        <span>Incubadora</span>
       </div>
-    </div>
+    </a>
     
-    <!-- Mobile Nav -->
-    <nav class="header__nav header__nav--mobile" id="mobileNav">
-      <a href="#que-es" data-i18n="nav.about">Qué es</a>
-      <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
-      <a href="tasacion.html">Tasación</a>
-      <a href="protocolos.html">Protocolos</a>
-      <a href="manifiesto.html" data-i18n="nav.manifesto">Manifiesto</a>
-      <div class="header__lang">
-        <button class="header__lang-btn active" data-lang="es">ES</button>
-        <span class="header__lang-sep">|</span>
-        <button class="header__lang-btn" data-lang="en">EN</button>
-      </div>
-      <div class="header__mobile-buttons">
-        <a href="login.html" class="btn btn--secondary" data-i18n="nav.login">Acceder</a>
-        <a href="registro.html" class="btn btn--primary" data-i18n="nav.register">Registro</a>
-      </div>
+    <nav class="nav">
+      <a href="huevos.html">Proyectos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="invertir.html">Invertir</a>
+      <a href="mailto:hola@fgq98.com">Contacto</a>
     </nav>
+
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
 
-  <main>
-    <!-- ============ HERO ============ -->
-    <section class="hero" id="hero">
-      <div class="hero__watermark">
-        <img src="assets/logo-mvp.png" alt="" aria-hidden="true">
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="huevos.html">Proyectos</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="invertir.html">Invertir</a>
+    <a href="mailto:hola@fgq98.com">Contacto</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Incubadora de proyectos digitales</p>
+    <h1>Incubamos ideas.<br>Algunas se convierten en <em>águilas</em>.</h1>
+    <p class="hero-subtitle">
+      FGQ 98 es una incubadora personal de proyectos digitales. Desarrollamos 
+      nuestras propias ideas, las hacemos crecer, y algunas alzan el vuelo. 
+      También ayudamos a otros a construir las suyas.
+    </p>
+    <div class="hero-cta">
+      <a href="huevos.html" class="btn btn-primary">Ver proyectos</a>
+      <a href="servicios.html" class="btn btn-secondary">Servicios</a>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="section">
+    <div class="section-header">
+      <h2>El proceso</h2>
+      <p>Cada proyecto pasa por tres estados. No todos sobreviven, pero los que lo hacen vuelan alto.</p>
+    </div>
+    
+    <div class="proceso">
+      <div class="proceso-item">
+        <div class="proceso-icon">🥚</div>
+        <h3>Huevo</h3>
+        <p>La idea toma forma. MVP en desarrollo, validando concepto.</p>
       </div>
-      <div class="container">
-        <div class="hero__content">
-          <span class="hero__badge" data-i18n="hero.badge">Escaparate de proyectos MVP</span>
-          <h1 class="hero__title" data-i18n="hero.title">
-            Ideas con forma,<br>buscando <span>equipo</span>
-          </h1>
-          <p class="hero__subtitle" data-i18n="hero.subtitle">
-            Proyectos propios con MVP funcional. Valoramos el esfuerzo invertido, 
-            pero el verdadero valor lo decides tú. Emprendedores, inversores y curiosos: bienvenidos.
-          </p>
-          <div class="hero__ctas">
-            <a href="#proyectos" class="btn btn--primary btn--large" data-i18n="hero.cta.projects">Ver proyectos</a>
-            <a href="chispa.html" class="btn btn--secondary btn--large" data-i18n="hero.cta.participate">Quiero participar</a>
-          </div>
+      <div class="proceso-item">
+        <div class="proceso-icon">🐣</div>
+        <h3>Pollo</h3>
+        <p>Primeros usuarios. Tracción inicial. Aprendiendo a caminar.</p>
+      </div>
+      <div class="proceso-item">
+        <div class="proceso-icon">🦅</div>
+        <h3>Águila</h3>
+        <p>Break-even o inversión. El proyecto vuela solo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HUEVOS (Proyectos) -->
+  <section class="section">
+    <div class="section-header">
+      <h2>En el nido</h2>
+      <p>Los proyectos que estamos incubando ahora mismo.</p>
+    </div>
+
+    <div class="huevos-grid">
+      
+      <!-- FAMILYNK -->
+      <article class="huevo-card">
+        <span class="huevo-estado">🐣 Eclosionando</span>
+        <h3>FAMILYNK</h3>
+        <p class="tagline">Ecosistema familiar</p>
+        <p>El lugar de encuentro de tu familia. Comparte bienes comunes, preserva la cultura familiar y activa eventos que unen generaciones.</p>
+        <a href="https://www.familynk.es" target="_blank" class="huevo-link">
+          Visitar web →
+        </a>
+      </article>
+
+      <!-- ESTRIDEA -->
+      <article class="huevo-card">
+        <span class="huevo-estado">🥚 Huevo</span>
+        <h3>ESTRIDEA</h3>
+        <p class="tagline">Copiloto de ideas</p>
+        <p>Asistente personal para preparar y ejecutar un plan de acción. Convierte tu idea en oportunidad de negocio.</p>
+        <a href="https://www.estridea.com" target="_blank" class="huevo-link">
+          Visitar web →
+        </a>
+      </article>
+
+      <!-- GENZ GOLFX -->
+      <article class="huevo-card">
+        <span class="huevo-estado">🥚 Huevo</span>
+        <h3>GenZ GolfX</h3>
+        <p class="tagline">Golf para nuevas generaciones</p>
+        <p>Reinventando la experiencia del golf para hacerla accesible, social y atractiva para los que nunca se lo plantearon.</p>
+        <a href="https://www.genzgolfx.com" target="_blank" class="huevo-link">
+          Visitar web →
+        </a>
+      </article>
+
+      <!-- BALISTICAMPEO -->
+      <article class="huevo-card">
+        <span class="huevo-estado">🥚 Huevo</span>
+        <h3>Balisticampeo</h3>
+        <p class="tagline">Balística para mortales</p>
+        <p>Analizador visual de agrupaciones de disparos. Ajustes e información balística sin el farragoso técnico.</p>
+        <a href="https://www.balisticampeo.com" target="_blank" class="huevo-link">
+          Visitar web →
+        </a>
+      </article>
+
+    </div>
+
+    <div class="ver-todos">
+      <a href="huevos.html" class="btn btn-secondary">Ver todos los proyectos</a>
+    </div>
+  </section>
+
+  <!-- SERVICIOS PREVIEW -->
+  <section class="section">
+    <div class="section-header">
+      <h2>También ayudamos a otros</h2>
+      <p>Mientras incubamos, ofrecemos servicios a emprendedores y empresas.</p>
+    </div>
+
+    <div class="servicios-preview">
+      <div class="servicios-grid">
+        <div class="servicio-item">
+          <h3>⚙️ Desarrollo web</h3>
+          <p>MVPs y aplicativos web. Desde landing pages hasta plataformas complejas con integraciones.</p>
+        </div>
+        <div class="servicio-item">
+          <h3>🧭 Mentorías</h3>
+          <p>Acompañamiento a emprendedores. Estrategia, producto y ejecución desde la experiencia real.</p>
+        </div>
+        <div class="servicio-item">
+          <h3>📊 Valoración</h3>
+          <p>Orientación en transiciones y valoración de proyectos early-stage. Due diligence para compradores e inversores.</p>
         </div>
       </div>
-    </section>
-
-    <!-- ============ QUÉ ES ============ -->
-    <section class="about" id="que-es">
-      <div class="container">
-        <div class="about__grid">
-          <div class="about__content">
-            <h2 data-i18n="about.title">¿Qué es MVP Launches?</h2>
-            <p data-i18n="about.p1">
-              Un escaparate de proyectos propios con Producto Mínimo Viable funcional, 
-              nacido de más de 40 años de experiencia en el mundo de la empresa: 
-              aciertos, fracasos, cicatrices y, sobre todo, lecciones aprendidas.
-            </p>
-            <p data-i18n="about.p2">
-              En esta primera fase, exponemos nuestras creaciones para validar si lo que 
-              vemos aporta valor. Si funciona, abriremos el modelo a otros creadores. 
-              <strong>El objetivo: conectar proyectos con personas capaces de hacerlos crecer</strong>, 
-              de forma equilibrada para todos.
-            </p>
-          </div>
-          <div class="about__features">
-            <div class="about__feature">
-              <div class="about__feature-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                  <line x1="9" y1="9" x2="9.01" y2="9"/>
-                  <line x1="15" y1="9" x2="15.01" y2="9"/>
-                </svg>
-              </div>
-              <h4 data-i18n="about.entrepreneurs.title">Emprendedores</h4>
-              <p data-i18n="about.entrepreneurs.desc">Empieza con un producto que ya existe. Menos riesgo, más velocidad, sin partir de cero.</p>
-            </div>
-            <div class="about__feature">
-              <div class="about__feature-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="1" x2="12" y2="23"/>
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                </svg>
-              </div>
-              <h4 data-i18n="about.investors.title">Inversores</h4>
-              <p data-i18n="about.investors.desc">Accede a proyectos con MVP real y propuesta clara. Oportunidades en fase temprana.</p>
-            </div>
-            <div class="about__feature">
-              <div class="about__feature-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                  <circle cx="12" cy="12" r="3"/>
-                </svg>
-              </div>
-              <h4 data-i18n="about.observers.title">Observadores</h4>
-              <p data-i18n="about.observers.desc">Sigue el ecosistema. Aprende cómo se estructuran proyectos y deals en early-stage.</p>
-            </div>
-            <div class="about__feature">
-              <div class="about__feature-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 20V10"/>
-                  <path d="M18 20V4"/>
-                  <path d="M6 20v-4"/>
-                </svg>
-              </div>
-              <h4 data-i18n="about.observatory.title">Observatorio</h4>
-              <p data-i18n="about.observatory.desc">Datos agregados sobre cómo funcionan las cosas. Por dónde van los tiros, para aprender.</p>
-            </div>
-          </div>
-        </div>
+      <div class="servicios-cta">
+        <a href="servicios.html" class="btn btn-primary">Ver servicios y precios</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ============ QUÉ APORTAMOS ============ -->
-    <section class="value" id="aportamos">
-      <div class="container">
-        <div class="value__inner">
-          <h2 class="text-center" data-i18n="value.title">Qué aporta MVP Launches</h2>
-          <p class="value__intro text-center" data-i18n="value.subtitle">
-            No solo exponemos proyectos. Creamos las condiciones para que las cosas funcionen 
-            de forma equilibrada entre todos los implicados.
-          </p>
-          
-          <div class="value__grid">
-            <div class="value__item">
-              <div class="value__icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-              </div>
-              <h4 data-i18n="value.visibility.title">Visibilidad</h4>
-              <p data-i18n="value.visibility.desc">
-                Escaparate para proyectos con MVP funcional. 
-                Audiencia de emprendedores, inversores y curiosos del ecosistema.
-              </p>
-            </div>
-            
-            <div class="value__item">
-              <div class="value__icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                  <line x1="3" y1="9" x2="21" y2="9"/>
-                  <line x1="9" y1="21" x2="9" y2="9"/>
-                </svg>
-              </div>
-              <h4 data-i18n="value.valuation.title">Valoración objetiva</h4>
-              <p data-i18n="value.valuation.desc">
-                Cuantificamos lo medible: esfuerzo en conceptualización, 
-                dirección y recursos de desarrollo. Base transparente para conversar.
-              </p>
-            </div>
-            
-            <div class="value__item">
-              <div class="value__icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="12" y1="8" x2="12" y2="12"/>
-                  <line x1="12" y1="16" x2="12.01" y2="16"/>
-                </svg>
-              </div>
-              <h4 data-i18n="value.risk.title">Riesgo compartido</h4>
-              <p data-i18n="value.risk.desc">
-                Proponemos que las partes asuman el riesgo juntas, con retribuciones 
-                variables ligadas al valor de los intangibles. El éxito se reparte.
-              </p>
-            </div>
-            
-            <div class="value__item">
-              <div class="value__icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-              </div>
-              <h4 data-i18n="value.connection.title">Conexión</h4>
-              <p data-i18n="value.connection.desc">
-                Facilitamos el acceso a futuros aliados y socios. 
-                Contactos orientados a hacer crecer proyectos, no a coleccionar tarjetas.
-              </p>
-            </div>
-            
-            <div class="value__item">
-              <div class="value__icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14 2 14 8 20 8"/>
-                  <line x1="16" y1="13" x2="8" y2="13"/>
-                  <line x1="16" y1="17" x2="8" y2="17"/>
-                  <polyline points="10 9 9 9 8 9"/>
-                </svg>
-              </div>
-              <h4>Referencias prácticas</h4>
-              <p>
-                Guías para formalizar la operación: protocolos de entrega, 
-                estructuras contractuales y pactos de socios. Llegas preparado.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PROYECTOS ============ -->
-    <section class="projects" id="proyectos">
-      <div class="container">
-        <div class="projects__header">
-          <h2 data-i18n="projects.title">Proyectos disponibles</h2>
-          <p data-i18n="projects.subtitle">Oportunidades reales con MVP funcional, buscando equipo para escalar.</p>
-        </div>
-        
-        <div class="projects__grid">
-          
-          <!-- CARD: GenZ GolfX -->
-          <article class="project-card">
-            <div class="project-card__image">
-              <img src="assets/proyectos/genzgolfx-thumb.png" alt="GenZ GolfX">
-              <span class="project-card__badge" data-i18n="project.genz.badge">Ecosistema</span>
-            </div>
-            <div class="project-card__content">
-              <span class="project-card__tag" data-i18n="project.genz.tag">Deporte & Comunidad</span>
-              <h3 class="project-card__title" data-i18n="project.genz.title">GenZ GolfX</h3>
-              <p class="project-card__description" data-i18n="project.genz.desc">
-                Ecosistema de golf para la Generación Z. Identifica y genera oportunidades 
-                conectando a jóvenes con los impulsos renovadores del golf: talento, 
-                negocio, comunidad y estilo de vida.
-              </p>
-              <div class="project-card__footer">
-                <a href="proyectos/genzgolfx.html" class="project-card__link">
-                  <span data-i18n="projects.view">Ver propuesta</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </a>
-                <a href="https://genzgolfx.com" target="_blank" rel="noopener" class="project-card__external" title="Visitar web">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                    <polyline points="15 3 21 3 21 9"/>
-                    <line x1="10" y1="14" x2="21" y2="3"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- CARD: Balisticampeo -->
-          <article class="project-card">
-            <div class="project-card__image">
-              <img src="assets/proyectos/balisticampeo-thumb.png" alt="Balisticampeo">
-              <span class="project-card__badge" data-i18n="project.balisticampeo.badge">Herramienta</span>
-            </div>
-            <div class="project-card__content">
-              <span class="project-card__tag" data-i18n="project.balisticampeo.tag">Actividades en el campo</span>
-              <h3 class="project-card__title" data-i18n="project.balisticampeo.title">Balisticampeo</h3>
-              <p class="project-card__description" data-i18n="project.balisticampeo.desc">
-                Simplifica la aplicación práctica de un conocimiento complejo. 
-                Análisis visual de agrupaciones de impacto para tiradores deportivos. 
-                Ajustes sencillos, aprendizaje asequible, mejora constante.
-              </p>
-              <div class="project-card__footer">
-                <a href="proyectos/balisticampeo.html" class="project-card__link">
-                  <span data-i18n="projects.view">Ver propuesta</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </a>
-                <a href="https://balisticampeo.com" target="_blank" rel="noopener" class="project-card__external" title="Visitar web">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                    <polyline points="15 3 21 3 21 9"/>
-                    <line x1="10" y1="14" x2="21" y2="3"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ CTA ============ -->
-    <section class="cta" id="cta">
-      <div class="container">
-        <div class="cta__inner">
-          <h2 data-i18n="cta.title">¿Te interesa algún proyecto?</h2>
-          <p data-i18n="cta.subtitle">
-            Emprendedores, inversores u observadores. 
-            Hay un sitio para ti en este ecosistema.
-          </p>
-          <a href="chispa.html" class="btn btn--primary btn--large" data-i18n="cta.button">Quiero participar</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ============ FOOTER ============ -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__logo">
-          <img src="assets/logo-mvp.png" alt="MVP Launches">
-          <span>mvplaunches</span>
-        </div>
-        <div class="footer__links">
-          <a href="#que-es" data-i18n="nav.about">Qué es</a>
-          <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
-          <a href="manifiesto.html">Manifiesto</a>
-          <a href="terminos.html">Términos</a>
-          <a href="privacidad.html">Privacidad</a>
-        </div>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <strong>FGQ 98</strong> — Incubadora de proyectos digitales
       </div>
-      <p class="footer__copy" data-i18n="footer.copy">
-        © 2025 MVP Launches. Conectando proyectos con equipos.
-      </p>
+      <div class="footer-links">
+        <a href="mailto:hola@fgq98.com">hola@fgq98.com</a>
+        <a href="huevos.html">Proyectos</a>
+        <a href="servicios.html">Servicios</a>
+      </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script type="module">
-    import { onAuthChange, logoutUser } from './js/firebase-config.js';
-    import { initTranslations } from './js/translations.js';
-    
-    // Initialize translations
-    initTranslations();
-    
-    // Check auth state and update UI
-    onAuthChange((user) => {
-      const loginBtn = document.querySelector('.header__nav--desktop a[href="login.html"]');
-      const registerBtn = document.querySelector('.header__nav--desktop a[href="registro.html"]');
-      const loginBtnMobile = document.querySelector('.header__mobile-buttons a[href="login.html"]');
-      const registerBtnMobile = document.querySelector('.header__mobile-buttons a[href="registro.html"]');
-      
-      if (user) {
-        if (loginBtn) {
-          loginBtn.setAttribute('data-i18n', 'nav.account');
-          loginBtn.textContent = 'Mi cuenta';
-          loginBtn.href = '#';
-        }
-        if (registerBtn) {
-          registerBtn.setAttribute('data-i18n', 'nav.logout');
-          registerBtn.textContent = 'Salir';
-          registerBtn.href = '#';
-          registerBtn.classList.remove('btn--primary');
-          registerBtn.classList.add('btn--secondary');
-          registerBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            await logoutUser();
-            window.location.reload();
-          });
-        }
-        if (loginBtnMobile) {
-          loginBtnMobile.setAttribute('data-i18n', 'nav.account');
-          loginBtnMobile.textContent = 'Mi cuenta';
-          loginBtnMobile.href = '#';
-        }
-        if (registerBtnMobile) {
-          registerBtnMobile.setAttribute('data-i18n', 'nav.logout');
-          registerBtnMobile.textContent = 'Salir';
-          registerBtnMobile.href = '#';
-          registerBtnMobile.addEventListener('click', async (e) => {
-            e.preventDefault();
-            await logoutUser();
-            window.location.reload();
-          });
-        }
-      }
-    });
-
-    // Header scroll effect
+  <script>
+    // Header scroll
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+      header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-          mobileNav.classList.remove('active');
-          menuToggle.classList.remove('active');
-        }
-      });
-    });
-
-    // Mobile menu toggle
+    // Mobile menu
     const menuToggle = document.getElementById('menuToggle');
     const mobileNav = document.getElementById('mobileNav');
-    
     menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
       mobileNav.classList.toggle('active');
     });
   </script>
